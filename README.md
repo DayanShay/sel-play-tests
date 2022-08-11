@@ -1,5 +1,5 @@
 
-# sel-play-tests
+# selenium and playwright -tests
 sela -  pytest project using selenium and playwright
 
 # Branches 
