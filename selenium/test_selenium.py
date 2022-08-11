@@ -2,7 +2,6 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import logging
-from selenium.webdriver.chrome.options import Options
 from data import *
 
 Test_log = logging.getLogger()
@@ -84,6 +83,7 @@ def test_buy_a_dress(test_open):
 
     # Starting order process
     for i in range(5):
+        Test_log.info(f"{driver.title}   step{i+1}")
         if i ==1:
             driver.implicitly_wait(3)
             driver.find_element(By.NAME,"processAddress").click()
@@ -97,7 +97,6 @@ def test_buy_a_dress(test_open):
             driver.implicitly_wait(3)
             driver.find_element(By.CLASS_NAME,"bankwire").click()
             continue
-
         if i ==4:
             driver.implicitly_wait(3)
             right_pass = driver.find_element(By.ID,"cart_navigation")
@@ -107,7 +106,7 @@ def test_buy_a_dress(test_open):
         driver.implicitly_wait(3)
         driver.find_element(By.LINK_TEXT, "Proceed to checkout").click()
     # loging info
-    print(text.split("\n")[0])
+    Test_log.info(f'{text[0:36]}')
     assert "Your order on My Store is complete." in text
 
 def test_forgat_passwd(test_open)->None:
@@ -115,6 +114,6 @@ def test_forgat_passwd(test_open)->None:
     driver.get('http://automationpractice.com/index.php')
     driver.find_element(By.CLASS_NAME, "login").click()
     driver.find_element(By.LINK_TEXT, "Forgot your password?").click()
-    print(driver.title)
+    Test_log.info(f"{driver.title}")
     assert driver.title == 'Forgot your password - My Store'
 
