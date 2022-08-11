@@ -20,3 +20,4 @@ To run Allure Report
 2. *allure serve .\"FullPath"\playwright\playwrightReports*
 
 exemple :
+![image](https://user-images.githubusercontent.com/108628136/184260728-acc17f23-b966-4d16-b127-54ec17300ceb.png)
