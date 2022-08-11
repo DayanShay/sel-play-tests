@@ -1,4 +1,4 @@
-sel-play-tests
+# sel-play-tests
 sela - pytest project using selenium and playwright
 
 MAST DO BEFORE relocate chromedriver.exe in project folder
