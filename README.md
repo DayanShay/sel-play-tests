@@ -1,8 +1,7 @@
 # sel-play-tests
 sela -  pytest project using selenium and playwright
  
-MAST DO BEFORE
-relocate chromedriver.exe in project folder 
+Only browser.Chromiume
 
 How to Run on cmd - make sure to copy the full path to the tests file.
 
