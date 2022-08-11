@@ -1,5 +1,5 @@
-# sel-play-tests
-sela -  pytest project using selenium and playwright
+# playwright-tests
+sela -  pytest project using playwright
  
 Only browser.Chromiume
 
