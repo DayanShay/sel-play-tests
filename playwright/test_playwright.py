@@ -37,7 +37,7 @@ def test_login_with_correct_details(open_page:sync_playwright)->None:
     assert page.title() == 'My account - My Store'
 
 
-def test_login_with_wrong_details(open_page):
+def test_login_with_wrong_details(open_page:sync_playwright)->None:
     """
     test login with test_login_wrong details to website from userslist
     :param open_page:  sync_playwright: website driver page
@@ -57,7 +57,7 @@ def test_login_with_wrong_details(open_page):
         assert page.title() == 'Login - My Store'
 
 
-def test_forget_password_button(open_page):
+def test_forget_password_button(open_page:sync_playwright)->None:
     """
     function clicking on forget password in login form.
     :param open_page: sync_playwright: website driver page
@@ -71,7 +71,7 @@ def test_forget_password_button(open_page):
     assert page.title() == 'Forgot your password - My Store'
 
 
-def test_find_and_buy_cheap(open_page):
+def test_find_and_buy_cheap(open_page:sync_playwright)->None:
     """
     function log in the website and  find the cheapest product under summer search and complete Buying
     :param test_open: sync_playwright: website driver page
