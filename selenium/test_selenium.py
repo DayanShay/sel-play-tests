@@ -9,12 +9,23 @@ Test_log = logging.getLogger()
 
 @pytest.fixture
 def test_open():
+    """
+    This test - will open the page
+    :return: None
+    """
     driver = webdriver.Chrome(path_driver)
     driver.maximize_window()
     yield driver
     driver.quit()
 
-def log_in_auto(driver:webdriver.Chrome,email :str,password:str):
+def log_in_auto(driver:webdriver.Chrome,email :str,password:str)->None:
+    """
+    function doing auto log in with username and password
+    :param driver: webdriver: website driver page
+    :param email: str: email of user
+    :param password: str : password of user
+    :return: None
+    """
     page = driver
     page.get('http://automationpractice.com/index.php')
     driver.find_element(By.CLASS_NAME, "login").click()
@@ -22,14 +33,24 @@ def log_in_auto(driver:webdriver.Chrome,email :str,password:str):
     driver.find_element(By.NAME, "passwd").send_keys(password)
     driver.find_element(By.NAME, "SubmitLogin").click()
 
-def test_login_right(test_open:webdriver.Chrome):
+def test_login_right(test_open:webdriver.Chrome)->None:
+    """
+    test login with right details to website
+    :param test_open: webdriver.Chrome: website driver page
+    :return: None
+    """
     log_in_auto(driver=test_open, email=right_user[0], password=right_user[1])
     res = test_open.find_element(By.CLASS_NAME, "account")
     username = res.find_element(By.TAG_NAME, "span").text
     # loging info
     assert username == 'shay dayan'
 
-def test_login_wrong(test_open):
+def test_login_wrong(test_open:webdriver.Chrome)->None:
+    """
+    test login with test_login_wrong details to website from userslist
+    :param test_open:  webdriver.Chrome: website driver page
+    :return: None
+    """
     for users in wrong_users_list:
         log_in_auto(test_open,email=users[0],password=users[1])
         msg_error = test_open.find_element(By.CLASS_NAME, "alert")
@@ -38,7 +59,12 @@ def test_login_wrong(test_open):
         print(msg_error.find_element(By.TAG_NAME,"ol").text)
         assert "error" in error.text
 
-def test_buy_a_dress(test_open):
+def test_buy_a_dress(test_open:webdriver.Chrome)->None:
+    """
+    function log in the website and  find the cheapest product under summer search and complete Buying
+    :param test_open: webdriver.Chrome: website driver page
+    :return: None
+    """
     driver = test_open
     driver.implicitly_wait(3)
 
@@ -109,7 +135,12 @@ def test_buy_a_dress(test_open):
     Test_log.info(f'{text[0:36]}')
     assert "Your order on My Store is complete." in text
 
-def test_forgat_passwd(test_open)->None:
+def test_forget_passwd(test_open:webdriver.Chrome)->None:
+    """
+    function clicking on forget password in login form.
+    :param test_open: webdriver.Chrome: website driver page
+    :return: None
+    """
     driver = test_open
     driver.get('http://automationpractice.com/index.php')
     driver.find_element(By.CLASS_NAME, "login").click()
